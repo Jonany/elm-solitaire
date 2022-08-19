@@ -12,9 +12,10 @@ To give myself something to try new things and possibly even deploy to app store
 ## Roadmap
 
 1. ~~Display several cards.~~
-2. Update the model to support a list of Cards.
-3. Add another suite.
-4. Add shuffle algorithm.
+2. ~~Update the model to support a list of Cards.~~
+3. Display cards in model.
+4. Add another suite.
+5. Add shuffle algorithm.
 
 
 

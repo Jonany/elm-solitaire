@@ -5,7 +5,7 @@ import Html exposing (..)
 import Html.Attributes exposing (style)
 import Html.Events exposing (..)
 import Random
-
+import Maybe exposing (withDefault)
 
 
 -- MAIN
@@ -25,13 +25,13 @@ main =
 
 
 type alias Model =
-  { card : Card
+  { cards : List Card
   }
 
 
 init : () -> (Model, Cmd Msg)
 init _ =
-  ( Model Three
+  ( Model [Three]
   , Cmd.none
   )
 
@@ -70,7 +70,7 @@ update msg model =
       )
 
     NewCard newCard ->
-      ( Model newCard
+      ( Model [newCard]
       , Cmd.none
       )
 
@@ -113,7 +113,7 @@ view model =
     , div [ 
       style "font-size" "12em"
       , style "color" "red"
-    ] [ text (viewCard model.card) ]
+    ] [ text (viewCard (Maybe.withDefault Three (List.head model.cards))) ]
     , div [ 
       style "font-size" "12em"
       , style "color" "black"
