@@ -1,7 +1,7 @@
 # Elm Solitaire
 
 
-Yet another Solitaire game. This time built using Elm. Current code stol-*err*-borrowed from Elm examples.
+Yet another Solitaire game. This time built using Elm. Some code stol-*err*-borrowed from Elm examples.
 
 **Impetus**
 
