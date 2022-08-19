@@ -14,7 +14,8 @@ To give myself something to try new things and possibly even deploy to app store
 1. ~~Display several cards.~~
 2. ~~Update the model to support a list of Cards.~~
 3. ~~Display cards in model.~~
-4. Display cards in columns and rows.
+4. ~~Display cards in columns and rows.~~
+5. Arrange cards left to right.
 5. Add another suite.
 6. Add shuffle algorithm.
 

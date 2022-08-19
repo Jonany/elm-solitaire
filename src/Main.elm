@@ -31,7 +31,11 @@ type alias Model =
 
 init : () -> (Model, Cmd Msg)
 init _ =
-  ( Model [Three, Ace, King, Queen, Five]
+  ( Model [
+    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, 
+    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, 
+    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, 
+    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King]
   , Cmd.none
   )
 
@@ -110,7 +114,7 @@ view : Model -> Html Msg
 view model =
   div []
     [ button [ onClick Draw ] [ text "Draw" ]
-    , div [] (List.map viewCard model.cards)
+    , div [ style "column-count" "14"] (List.map viewCard model.cards)
     ]
 
 
