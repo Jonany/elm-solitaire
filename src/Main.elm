@@ -31,7 +31,7 @@ type alias Model =
 
 init : () -> (Model, Cmd Msg)
 init _ =
-  ( Model [Three]
+  ( Model [Three, Ace, King, Queen, Five]
   , Cmd.none
   )
 
@@ -110,19 +110,12 @@ view : Model -> Html Msg
 view model =
   div []
     [ button [ onClick Draw ] [ text "Draw" ]
-    , div [ 
-      style "font-size" "12em"
-      , style "color" "red"
-    ] [ text (viewCard (Maybe.withDefault Three (List.head model.cards))) ]
-    , div [ 
-      style "font-size" "12em"
-      , style "color" "black"
-    ] [ text (viewCard Seven) ]
+    , div [] (List.map viewCard model.cards)
     ]
 
 
-viewCard : Card -> String
-viewCard card =
+viewCardFace : Card -> String
+viewCardFace card =
   case card of
     Ace -> "🂡"
     Two -> "🂢"
@@ -137,3 +130,11 @@ viewCard card =
     Jack -> "🂫"
     Queen -> "🂭"
     King -> "🂮"
+
+
+viewCard : Card -> Html Msg
+viewCard card =
+  div [ 
+      style "font-size" "12em"
+      , style "color" "red"
+    ] [ text (viewCardFace card) ]
