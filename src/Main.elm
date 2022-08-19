@@ -4,8 +4,8 @@ import Browser
 import Html exposing (..)
 import Html.Attributes exposing (style)
 import Html.Events exposing (..)
-import Random
-import Maybe exposing (withDefault)
+import Random.List exposing (shuffle)
+import Random exposing (generate)
 
 
 -- MAIN
@@ -31,11 +31,7 @@ type alias Model =
 
 init : () -> (Model, Cmd Msg)
 init _ =
-  ( Model [
-    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, 
-    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, 
-    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, 
-    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King]
+  ( Model [Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King]
   , Cmd.none
   )
 
@@ -61,40 +57,18 @@ type Card
 
 
 type Msg
-  = Draw
-  | NewCard Card
+  = Shuffle
+  | ShuffledList (List Card)
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
-    Draw ->
-      ( model
-      , Random.generate NewCard cardGenerator
-      )
+    Shuffle ->
+        ( model, generate ShuffledList (shuffle model.cards) )
 
-    NewCard newCard ->
-      ( Model [newCard]
-      , Cmd.none
-      )
-
-
-cardGenerator : Random.Generator Card
-cardGenerator =
-  Random.uniform Ace
-    [ Two
-    , Three
-    , Four
-    , Five
-    , Six
-    , Seven
-    , Eight
-    , Nine
-    , Ten
-    , Jack
-    , Queen
-    , King
-    ]
+    ShuffledList shuffledList ->
+        ( Model shuffledList, Cmd.none)
 
 
 
@@ -113,7 +87,7 @@ subscriptions model =
 view : Model -> Html Msg
 view model =
   div []
-    [ button [ onClick Draw ] [ text "Draw" ]
+    [ button [ onClick Shuffle ] [ text "Shuffle" ]
     , div [ style "column-count" "14"] (List.map viewCard model.cards)
     ]
 
@@ -142,3 +116,7 @@ viewCard card =
       style "font-size" "12em"
       , style "color" "red"
     ] [ text (viewCardFace card) ]
+
+
+-- shuffleCards : List Card -> List Card
+-- shuffleCards cards = shuffle cards
