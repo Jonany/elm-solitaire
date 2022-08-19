@@ -114,6 +114,10 @@ view model =
       style "font-size" "12em"
       , style "color" "red"
     ] [ text (viewCard model.card) ]
+    , div [ 
+      style "font-size" "12em"
+      , style "color" "black"
+    ] [ text (viewCard Seven) ]
     ]
 
 
