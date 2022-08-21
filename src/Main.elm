@@ -88,7 +88,11 @@ view : Model -> Html Msg
 view model =
   div []
     [ button [ onClick Shuffle ] [ text "Shuffle" ]
-    , div [ style "column-count" "14"] (List.map viewCard model.cards)
+        , div
+            [ style "display" "grid"
+            , style "grid-template-columns" "repeat(13, 7vw)"
+            ]
+            (List.map viewCard model.cards)
     ]
 
 

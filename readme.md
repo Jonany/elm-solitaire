@@ -16,7 +16,7 @@ To give myself something to try new things and possibly even deploy to app store
 3. ~~Display cards in model.~~
 4. ~~Display cards in columns and rows.~~
 5. ~~Add shuffling.~~
-6. Arrange cards left to right, top to bottom.
+6. ~~Arrange cards left to right, top to bottom.~~
 7. Add the other suites.
 8. Make things look a little nicer.
 9. Add tableau piles.
